@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.detorresrc.tech4300.assessment3_employeemanagement.data.Employee
 import com.detorresrc.tech4300.assessment3_employeemanagement.data.ParcelableEmployee
 import com.detorresrc.tech4300.assessment3_employeemanagement.presentation.EmployeeViewModel
+import kotlinx.parcelize.Parcelize
 
 // AddEditEmployeeActivity class for adding and editing employees
 class AddEditEmployeeActivity : AppCompatActivity() {
@@ -32,6 +33,14 @@ class AddEditEmployeeActivity : AppCompatActivity() {
     private lateinit var viewModel: EmployeeViewModel
     // Declare Int for storing employee ID
     private var employeeId = 0;
+
+    private var tvState: HashMap<String, Int> = hashMapOf(
+        "etFirstName" to 0,
+        "etLastName" to 0,
+        "etDesignation" to 0,
+        "etDepartment" to 0,
+        "etSalary" to 0
+    )
 
     // Override onCreate function
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -85,6 +94,26 @@ class AddEditEmployeeActivity : AppCompatActivity() {
             // Change Button text to "Add Employee" if action type is "add"
             idBtn.text = getString(R.string.add_employee)
         }
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+
+        //Restore tvState
+        tvState = savedInstanceState.getSerializable("tvState") as HashMap<String, Int>
+
+        //Restore EditTexts
+        tvState.forEach { (key, value) ->
+            findViewById<EditText>(resources.getIdentifier(key, "id", packageName)).setBackgroundResource(value)
+        }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+
+        //Save tvState
+        outState.putSerializable("tvState", tvState)
+
+        super.onSaveInstanceState(outState)
     }
 
     // Function for updating employee details
@@ -149,15 +178,21 @@ class AddEditEmployeeActivity : AppCompatActivity() {
         val fields = listOf(etFirstName, etLastName, etDesignation, etDepartment, etSalary)
         var isValid = true
 
+        tvState.forEach { (key, _) ->
+            tvState[key] = R.drawable.custom_border
+        }
+
         // Check each field if it's empty
         fields.forEach { field ->
             if (field.text.toString().isEmpty()) {
                 // Set error background if field is empty
                 field.setBackgroundResource(R.drawable.error_border)
                 isValid = false
+                tvState[field.resources.getResourceEntryName(field.id)] = R.drawable.error_border
             } else {
                 // Set normal background if field is not empty
                 field.setBackgroundResource(R.drawable.custom_border)
+                tvState[field.resources.getResourceEntryName(field.id)] = R.drawable.custom_border
             }
         }
 
