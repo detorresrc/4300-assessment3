@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Assessment 3 - Employee Management</string>
+    <string name="update_employee">Update Employee</string>
+    <string name="add_employee">Add Employee</string>
+    <string name="employee_not_found">Employee not found</string>
+    <string name="employee_updated">Employee updated</string>
+    <string name="employee_added">Employee added</string>
+</resources>

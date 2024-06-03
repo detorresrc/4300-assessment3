@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black_shade_1"
+    tools:context=".AddEditEmployeeActivity">
+
+    <EditText
+        android:id="@+id/etFirstName"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_margin="10dp"
+        android:hint="Enter First Name *"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:background="@drawable/custom_border"/>
+
+    <EditText
+        android:id="@+id/etMiddleName"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_margin="10dp"
+        android:hint="Enter Middle Name"
+        android:textColor="@color/white"
+        android:layout_below="@id/etFirstName"
+        android:textColorHint="@color/white"
+        android:background="@drawable/custom_border"/>
+
+    <EditText
+        android:id="@+id/etLastName"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_margin="10dp"
+        android:hint="Enter Last Name *"
+        android:textColor="@color/white"
+        android:layout_below="@id/etMiddleName"
+        android:textColorHint="@color/white"
+        android:background="@drawable/custom_border"/>
+
+    <EditText
+        android:id="@+id/etSalary"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_margin="10dp"
+        android:hint="Enter Salary *"
+        android:text="0.00"
+        android:textColor="@color/white"
+        android:layout_below="@id/etLastName"
+        android:textColorHint="@color/white"
+        android:inputType="numberDecimal"
+        android:background="@drawable/custom_border"/>
+
+    <EditText
+        android:id="@+id/etDepartment"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_margin="10dp"
+        android:hint="Enter Department *"
+        android:textColor="@color/white"
+        android:layout_below="@id/etSalary"
+        android:textColorHint="@color/white"
+        android:background="@drawable/custom_border"/>
+
+    <EditText
+        android:id="@+id/etDesignation"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_margin="10dp"
+        android:hint="Enter Designation *"
+        android:textColor="@color/white"
+        android:layout_below="@id/etDepartment"
+        android:textColorHint="@color/white"
+        android:background="@drawable/custom_border"/>
+
+    <EditText
+        android:id="@+id/etRemarks"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/idBtn"
+        android:layout_below="@id/etDesignation"
+        android:layout_margin="10dp"
+        android:background="@color/black_shade_1"
+        android:gravity="start|top"
+        android:hint="Enter your Remarks / Comments here..."
+        android:inputType="textMultiLine"
+        android:singleLine="false"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white" />
+
+    <Button
+        android:id="@+id/idBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp"
+        android:background="@drawable/custom_button"
+        android:text="Button"
+        android:textAllCaps="false"
+        android:textColor="@color/white" />
+</RelativeLayout>
